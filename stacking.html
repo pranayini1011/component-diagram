@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Stacking of Images</title>
+    <style type="text/css">
+      .image1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      .image2 {
+        position: absolute;
+        top: 120px;
+        left: 50px;
+        z-index: 0;
+      }
+      .image3 {
+        position: absolute;
+        top: 240px;
+        left: 100px;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <!-- Image 1 -->
+      <img class="image1" id="control1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Tanzanian_Animals.jpg/1200px-Tanzanian_Animals.jpg" alt="(New Image 1)" width="40%" height="40%" onclick="stackImage('control1')" />
+      
+      <!-- Image 2 -->
+      <img class="image2" id="control2" src="https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg?cs=srgb&dl=pexels-pixabay-66898.jpg&fm=jpg" alt="(New Image 2)" width="40%" height="40%" onclick="stackImage('control2')" />
+      
+      <!-- Image 3 -->
+      <img class="image3" id="control3" src="https://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpg?cs=srgb&dl=pexels-pixabay-34098.jpg&fm=jpg" alt="(New Image 3)" width="40%" height="40%" onclick="stackImage('control3')" />
+    </p>
+
+    <script>
+      var topImage = "control1";
+
+      function stackImage(newTop) {
+        var currentTop = document.getElementById(topImage).style;
+        var newTopStyle = document.getElementById(newTop).style;
+        
+        currentTop.zIndex = "0";  // Set current top image to lowest z-index
+        newTopStyle.zIndex = "10";  // Bring new clicked image to the front
+        topImage = newTop;  // Update the top image reference
+      }
+    </script>
+  </body>
+</html>
